@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.linalg as alg
 
-def TVGL(data, lengthOfSlice, lamb, beta, indexOfPenalty, verbose = False, eps = 3e-3, epsAbs = 1e-3, epsRel = 1e-3):        
+def TVGL(data, lengthOfSlice, lamb, beta, indexOfPenalty, verbose = False, eps = 3e-3, epsAbs = 1e-3, epsRel = 1e-3, max_iter=250):        
     if indexOfPenalty == 1:
         print 'Use l-1 penalty function'
         from inferGraphL1 import *
@@ -63,7 +63,7 @@ def TVGL(data, lengthOfSlice, lamb, beta, indexOfPenalty, verbose = False, eps =
             
     # need to write the parameters of ADMM
 #    gvx.Solve()
-    gvx.Solve(EpsAbs=epsAbs, EpsRel=epsRel, Verbose = verbose)
+    gvx.Solve(EpsAbs=epsAbs, EpsRel=epsRel, Verbose = verbose, MaxIters=max_iter)
    # gvx.Solve(MaxIters = 700, Verbose = True, EpsAbs=eps_abs, EpsRel=eps_rel)
     # gvx.Solve( NumProcessors = 1, MaxIters = 3)
     
